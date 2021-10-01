@@ -12,7 +12,7 @@ To creat an independent module of the project in `IntelliJ`:
 
 
 ## Step 3: produce the plugin jar file
-To produce the plugin jar files of the `pluginModule` in in `IntelliJ`:
+To produce the plugin jar files of the `pluginModule` in `IntelliJ`:
   - Build Project -> File -> Project Structure -> Artifacts -> Add -> Jar From modules dependencies-> Create JAR from modules -> Select `pluginModule` as Module and select the Directory for META-INF/MANIFEST.MF -> Apply
   
     ![image](https://user-images.githubusercontent.com/76859781/135688941-b1d6da84-bbfa-45e3-8fba-befd904cf475.png)
@@ -23,6 +23,6 @@ To produce the plugin jar files of the `pluginModule` in in `IntelliJ`:
 ## Step 4: load the plugin jar file
 - use `Privileged` blocks catch the illegal access.
 
-Finally, you can load the plugin jar files at runtime, by doing this, you can access to the custom plugin classes. Example `LoadPluginFile` is shown in pluginDemoModule/src/.
+Finally, you can load the plugin jar files using 1URLClassLoader`, by doing this, you can access to the custom plugin classes. Example `LoadPluginFile` is shown in pluginDemoModule/src/.
 
 
