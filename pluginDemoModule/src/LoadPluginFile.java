@@ -1,3 +1,4 @@
+import java.awt.font.FontRenderContext;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -11,46 +12,63 @@ public class LoadPluginFile {
 
     private List<PluginInterface> pluginClasses = new ArrayList<>(); // store all bugs
 
-    /**
-     * get all the plugin classes from jar.
-     *
-     * @return a list of classes
-     */
-    public List<PluginInterface> getEnemyClasses(){
-        return this.pluginClasses;
+    public static void main(String[] args) {
+        LoadPluginFile loadFile = new LoadPluginFile();
+        List<String> names = new ArrayList<>(){};
+        names.add("Plugin1");
+        names.add("Plugin2");
+        List<PluginInterface> lis = loadFile.loadClasses(names);
+        for (PluginInterface p:lis) {
+            System.out.println("Name: "+p.getName() + ", ID: "+ p.getID() + ", address: " + p.getAddress());
+        }
     }
 
     /**
-     * Load all enemy from the jar file.
-     * construct all enemy objects with associated positions.
-     * store them in enemyClasses list.
+     * load Plugins from jar file.
      *
-     * @param names list of name
+     * @return - the list
+     */
+    public List<PluginInterface> loadClasses(List<String> name) {
+        try {
+            for(String n:name) {
+                this.setClasses(n);
+            }
+        } catch (ClassNotFoundException | IllegalAccessException | InstantiationException e) {
+            e.printStackTrace();
+        }
+        return pluginClasses;
+    }
+
+    /**
+     * Load all Plugins from the jar file.
+     * construct all Plugin objects.
+     * store them in a list.
+     *
+     * @param name class name
      * @throws MalformedURLException msg
      * @throws ClassNotFoundException msg
      * @throws IllegalAccessException msg
      * @throws InstantiationException msg
      */
-    public void setEnemyClasses(List<String> names, String name) throws MalformedURLException,
-            ClassNotFoundException, IllegalAccessException, InstantiationException {
-        File jarFile = new File("src/nz/ac/vuw/ecs/swen225/gp21/persistency/levels");
+    public void setClasses(String name) throws ClassNotFoundException, IllegalAccessException, InstantiationException {
+        File jarFile = new File("pluginDemoModule/src/");
         File[] files = jarFile.listFiles(file -> file.getPath().toLowerCase().endsWith(".jar"));
 
-        assert files != null;
+        if (files != null && files.length > 0) {
+            Class classToLoad = Class.forName(name, false, getClassLoader(files[0]));
 
-        Class classToLoad = Class.forName(name, false, getClassLoader(files[0]));
-
-        // set each with object corresponding position
-        for (String n : names) {
+            // set each with object corresponding position
             Object instance = classToLoad.newInstance();
-            PluginInterface act = (PluginInterface) instance;
-            this.pluginClasses.add(act);
+            PluginInterface ob = (PluginInterface) instance;
+
+            this.pluginClasses.add(ob);
         }
 
     }
 
     /**
      * get the classloader with Privileged Blocks.
+     *
      * @param file input
      * @return classloader
      */

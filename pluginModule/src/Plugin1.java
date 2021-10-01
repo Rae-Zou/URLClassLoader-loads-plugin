@@ -2,7 +2,7 @@ public class Plugin1 implements PluginInterface {
 
     @Override
     public String getName() {
-        return "I am plugin1.";
+        return "Plugin1";
     }
 
     @Override
@@ -12,6 +12,6 @@ public class Plugin1 implements PluginInterface {
 
     @Override
     public String getAddress() {
-        return "2x Webb st, Wellington.";
+        return "2x Webb st, Wellington";
     }
 }

@@ -1,7 +1,7 @@
 public class Plugin2 implements PluginInterface{
     @Override
     public String getName() {
-        return "I am plugin2.";
+        return "Plugin2";
     }
 
     @Override
