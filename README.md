@@ -17,6 +17,7 @@ To produce the plugin jar files of the `pluginModule` in in `IntelliJ`:
   
     ![image](https://user-images.githubusercontent.com/76859781/135688941-b1d6da84-bbfa-45e3-8fba-befd904cf475.png)
   - Before compile and build the JAR file, one important step is to include the configuration files in `META-INF/services` directory. 
+  
     ![image](https://user-images.githubusercontent.com/76859781/135685978-f21152af-f786-4f71-9884-fcf187eb331c.png)
   - Build project -> Build Artifacts -> Get the jar file from `out`
 ## Step 4: load the plugin jar file
