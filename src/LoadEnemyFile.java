@@ -1,3 +1,5 @@
+package src;
+
 public class LoadEnemyFile {
 
     private List<Enemy> enemyClasses = new ArrayList<>(); // store all bugs
