@@ -33,7 +33,7 @@ public class LoadPluginFile {
     }
 
     /**
-     * load Plugins from jar file.
+     * load Plugins with different classes name.
      *
      * @return - the list
      */
@@ -54,7 +54,6 @@ public class LoadPluginFile {
      * store them in a list.
      *
      * @param name class name
-     * @throws MalformedURLException msg
      * @throws ClassNotFoundException msg
      * @throws IllegalAccessException msg
      * @throws InstantiationException msg
@@ -66,7 +65,7 @@ public class LoadPluginFile {
         if (files != null && files.length > 0) {
             Class classToLoad = Class.forName(name, false, getClassLoader(files[0]));
 
-            // set each with object corresponding position
+            // construct the objects
             Object instance = classToLoad.newInstance();
             PluginInterface ob = (PluginInterface) instance;
 
