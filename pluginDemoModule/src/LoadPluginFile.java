@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class LoadPluginFile {
 
-    private List<PluginInterface> pluginClasses = new ArrayList<>(); // store all bugs
+    private List<PluginInterface> pluginClasses = new ArrayList<>(); // store all plugins
 
     /**
      * Test the accessibility.
