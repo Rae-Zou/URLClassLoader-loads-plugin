@@ -1,16 +1,23 @@
-package src;
+import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLClassLoader;
+import java.security.AccessController;
+import java.security.PrivilegedAction;
+import java.util.ArrayList;
+import java.util.List;
 
-public class LoadEnemyFile {
+public class LoadPluginFile {
 
-    private List<Enemy> enemyClasses = new ArrayList<>(); // store all bugs
+    private List<PluginInterface> pluginClasses = new ArrayList<>(); // store all bugs
 
     /**
-     * get all the Enemy classes from jar.
+     * get all the plugin classes from jar.
      *
      * @return a list of classes
      */
-    public List<Enemy> getEnemyClasses(){
-        return this.enemyClasses;
+    public List<PluginInterface> getEnemyClasses(){
+        return this.pluginClasses;
     }
 
     /**
@@ -18,13 +25,13 @@ public class LoadEnemyFile {
      * construct all enemy objects with associated positions.
      * store them in enemyClasses list.
      *
-     * @param pos list of pos
+     * @param names list of name
      * @throws MalformedURLException msg
      * @throws ClassNotFoundException msg
      * @throws IllegalAccessException msg
      * @throws InstantiationException msg
      */
-    public void setEnemyClasses(List<Coordinate> pos, String name) throws MalformedURLException,
+    public void setEnemyClasses(List<String> names, String name) throws MalformedURLException,
             ClassNotFoundException, IllegalAccessException, InstantiationException {
         File jarFile = new File("src/nz/ac/vuw/ecs/swen225/gp21/persistency/levels");
         File[] files = jarFile.listFiles(file -> file.getPath().toLowerCase().endsWith(".jar"));
@@ -34,11 +41,10 @@ public class LoadEnemyFile {
         Class classToLoad = Class.forName(name, false, getClassLoader(files[0]));
 
         // set each with object corresponding position
-        for (Coordinate po : pos) {
+        for (String n : names) {
             Object instance = classToLoad.newInstance();
-            Enemy act = (Enemy) instance;
-            act.setPosition(new Coordinate(po.getX(), po.getY()));
-            this.enemyClasses.add(act);
+            PluginInterface act = (PluginInterface) instance;
+            this.pluginClasses.add(act);
         }
 
     }
@@ -55,7 +61,7 @@ public class LoadEnemyFile {
                         try {
                             return new URLClassLoader(
                                     new URL[]{file.toURI().toURL()},
-                                    Enemy.class.getClassLoader()
+                                    PluginInterface.class.getClassLoader()
                             );
                         } catch (MalformedURLException e) {
                             e.printStackTrace();
