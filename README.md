@@ -23,6 +23,6 @@ To produce the plugin jar files of the `pluginModule` in `IntelliJ`:
 ## Step 4: load the plugin jar file
 - use `Privileged` blocks catch the illegal access.
 
-Finally, you can load the plugin jar files using `URLClassLoader`, by doing this, you can access to the custom plugin classes. Example `LoadPluginFile` is shown in pluginDemoModule/src/.
+Finally, you can load the plugin jar files using `URLClassLoader`, you will be able to access to the custom plugin classes. Example `LoadPluginFile` is shown in pluginDemoModule/src/.
 
 
