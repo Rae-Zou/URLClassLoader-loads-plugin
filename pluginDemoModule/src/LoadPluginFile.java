@@ -16,6 +16,11 @@ public class LoadPluginFile {
 
     private List<PluginInterface> pluginClasses = new ArrayList<>(); // store all bugs
 
+    /**
+     * Test the accessibility.
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         LoadPluginFile loadFile = new LoadPluginFile();
         List<String> names = new ArrayList<>(){};
