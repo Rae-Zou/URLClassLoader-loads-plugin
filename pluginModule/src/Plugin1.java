@@ -1,3 +1,8 @@
+/**
+ * custom plugin class 1.
+ *
+ * @author Rae
+ */
 public class Plugin1 implements PluginInterface {
 
     @Override

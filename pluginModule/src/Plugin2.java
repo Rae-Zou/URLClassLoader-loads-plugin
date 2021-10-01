@@ -1,3 +1,8 @@
+/**
+ * custom plugin class 2.
+ *
+ * @author Rae
+ */
 public class Plugin2 implements PluginInterface{
     @Override
     public String getName() {

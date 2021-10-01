@@ -1,4 +1,3 @@
-import java.awt.font.FontRenderContext;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -8,6 +7,11 @@ import java.security.PrivilegedAction;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * implement access to PluginInterface class using a plugin-based design.
+ *
+ * @author Rae
+ */
 public class LoadPluginFile {
 
     private List<PluginInterface> pluginClasses = new ArrayList<>(); // store all bugs
