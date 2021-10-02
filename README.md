@@ -25,4 +25,7 @@ To produce the plugin jar files of the `pluginModule` in `IntelliJ`:
 
 Finally, you can load the plugin jar files using `URLClassLoader`, after that you will be able to access to the custom plugin classes. Example `LoadPluginFile` is shown in pluginDemoModule/src/.
 
+![image](https://user-images.githubusercontent.com/76859781/135702730-62823f11-06de-485c-afd0-0cf44fdab032.png)
+
+
 
