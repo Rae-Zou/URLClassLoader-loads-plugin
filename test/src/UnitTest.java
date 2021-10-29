@@ -1,9 +1,7 @@
-import org.junit.jupiter.api.Test;
-
+import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * JUnit Test.
@@ -21,7 +19,7 @@ public class UnitTest {
         List<PluginInterface> lis = loadFile.loadClasses(names);
         for (PluginInterface p:lis) {
             for(String n:names){
-                assertEquals(n, p.getName());
+                Assertions.assertEquals(n, p.getName());
             }
         }
     }
